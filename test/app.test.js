@@ -7,22 +7,24 @@ chai.use(chaiHttp);
 
 describe("GET /", () => {
   let server;
+  let request;
 
-  // Start the server before the tests
-  before((done) => {
-    server = app.listen(3000, () => {
+  // Start a new server instance before each test
+  beforeEach((done) => {
+    server = app.listen(0, () => {
+      const port = server.address().port;
+      request = chai.request(`http://localhost:${port}`);
       done();
     });
   });
 
-  // Stop the server after the tests
-  after(() => {
+  // Close the server after each test
+  afterEach(() => {
     server.close();
   });
 
   it("should return Hello, GitHub Actions!", (done) => {
-    chai.request(server)
-      .get('/')
+    request.get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.text).to.equal('Hello, GitHub Actions!');
