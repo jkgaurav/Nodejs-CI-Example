@@ -18,6 +18,8 @@ jobs:
           node-version: '14.x'
       - name: Install Dependencies
         run: npm install
+      - name: Install Jest as a Dependency
+        run: npm install --save-dev jest
       - name: Run Build
         run: npm run build
       - name: Run Tests
