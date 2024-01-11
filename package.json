@@ -1,11 +1,21 @@
 {
-  "name": "nodejs-ci-example",
+  "name": "github-actions-example",
   "version": "1.0.0",
-  "description": "A simple Node.js project to demonstrate CI with GitHub Actions",
+  "description": "A simple Node.js project to demonstrate GitHub Actions CI",
+  "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "build": "echo \"Building the project...\""
+    "start": "node app.js",
+    "test": "mocha"
   },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "supertest": "^6.1.3"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC"
 }
